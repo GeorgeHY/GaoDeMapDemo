@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B87C08CB6F4F9529FA1AB36 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C50B8414F2C4047183111821 /* libPods.a */; };
 		A4648D631B02A871000E5245 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4648D621B02A871000E5245 /* main.m */; };
 		A4648D661B02A871000E5245 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4648D651B02A871000E5245 /* AppDelegate.m */; };
 		A4648D691B02A871000E5245 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4648D681B02A871000E5245 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01CA438A68F4484A974F1AB1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		046CDB4EA62EEF9B314B422D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A4648D5D1B02A871000E5245 /* GaoDeMapDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GaoDeMapDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4648D611B02A871000E5245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4648D621B02A871000E5245 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		A4648D761B02A871000E5245 /* GaoDeMapDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GaoDeMapDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4648D7B1B02A871000E5245 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4648D7C1B02A871000E5245 /* GaoDeMapDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaoDeMapDemoTests.m; sourceTree = "<group>"; };
+		C50B8414F2C4047183111821 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B87C08CB6F4F9529FA1AB36 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +65,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D5031E359C2D19F60469151 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C50B8414F2C4047183111821 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A4648D541B02A871000E5245 = {
 			isa = PBXGroup;
 			children = (
 				A4648D5F1B02A871000E5245 /* GaoDeMapDemo */,
 				A4648D791B02A871000E5245 /* GaoDeMapDemoTests */,
 				A4648D5E1B02A871000E5245 /* Products */,
+				F771DA0BF285D96B76D05BEA /* Pods */,
+				4D5031E359C2D19F60469151 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +134,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F771DA0BF285D96B76D05BEA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01CA438A68F4484A974F1AB1 /* Pods.debug.xcconfig */,
+				046CDB4EA62EEF9B314B422D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A4648D801B02A871000E5245 /* Build configuration list for PBXNativeTarget "GaoDeMapDemo" */;
 			buildPhases = (
+				9149C7238B4A319EBDED9D5C /* Check Pods Manifest.lock */,
 				A4648D591B02A871000E5245 /* Sources */,
 				A4648D5A1B02A871000E5245 /* Frameworks */,
 				A4648D5B1B02A871000E5245 /* Resources */,
+				7AAA0CDC24EB91E4CEDDA246 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +239,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7AAA0CDC24EB91E4CEDDA246 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9149C7238B4A319EBDED9D5C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A4648D591B02A871000E5245 /* Sources */ = {
@@ -345,21 +404,25 @@
 		};
 		A4648D811B02A871000E5245 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01CA438A68F4484A974F1AB1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GaoDeMapDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
 		A4648D821B02A871000E5245 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 046CDB4EA62EEF9B314B422D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GaoDeMapDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};
@@ -416,6 +479,7 @@
 				A4648D821B02A871000E5245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4648D831B02A871000E5245 /* Build configuration list for PBXNativeTarget "GaoDeMapDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +488,7 @@
 				A4648D851B02A871000E5245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
