@@ -12,7 +12,7 @@
 
 #define APIKey @"5b6b161c2062e43dee547b9be1862f5e"
 
-@interface ViewController () <MAMapViewDelegate,AMapSearchDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ViewController () <MAMapViewDelegate,AMapSearchDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic,strong) MAMapView * mapView;
 @property (nonatomic,strong) AMapSearchAPI * mapSearch;
@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSArray * poisArr;
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * annotations;
+@property (nonatomic,strong) UITextField * tf;
 
 @end
 
@@ -41,12 +42,13 @@
     [self.view addSubview:searchView];
     
     //textfield
-    UITextField * tf = [[UITextField alloc]initWithFrame:CGRectMake(60, 5, 200, 30)];
-    tf.backgroundColor = [UIColor whiteColor];
-    [searchView addSubview:tf];
+    self.tf = [[UITextField alloc]initWithFrame:CGRectMake(60, 5, 200, 30)];
+    self.tf.backgroundColor = [UIColor whiteColor];
+    self.tf.delegate = self;
+    [searchView addSubview:self.tf];
     
     //searchBtn
-    UIButton * searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(tf.frame)+10, 5, 40, 30)];
+    UIButton * searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.tf.frame)+10, 5, 40, 30)];
     [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
     searchBtn.backgroundColor = [UIColor lightGrayColor];
     [searchBtn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -95,7 +97,12 @@
     AMapPlaceSearchRequest * request = [[AMapPlaceSearchRequest alloc]init];
     request.searchType = AMapSearchType_PlaceAround;
     request.location = [AMapGeoPoint locationWithLatitude:self.currentLocation.coordinate.latitude longitude:self.currentLocation.coordinate.longitude];
-    request.keywords = @"鑫茂";
+    if (self.tf.text.length > 0) {
+        request.keywords = self.tf.text;
+    }else{
+        request.keywords = nil;
+    }
+    
     [self.mapSearch AMapPlaceSearch:request];
 }
 
@@ -205,6 +212,13 @@
     annotation.subtitle = poi.address;
     [self.annotations addObject:annotation];
     [self.mapView addAnnotation:annotation];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
