@@ -54,12 +54,42 @@
     }
 }
 
+- (void)reGeoAction
+{
+    if (self.currentLocation) {
+        AMapReGeocodeSearchRequest * request = [[AMapReGeocodeSearchRequest alloc]init];
+        request.location = [AMapGeoPoint locationWithLatitude:self.currentLocation.coordinate.latitude longitude:self.currentLocation.coordinate.longitude];
+        [self.mapSearch AMapReGoecodeSearch:request];
+    }
+}
+
 #pragma mark - MAMapViewDelegate
 - (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
 {
     self.currentLocation = userLocation.location;
     NSLog(@"%@",self.currentLocation);
 }
+
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view
+{
+    if ([view.annotation isKindOfClass:[MAUserLocation class]]) {
+        [self reGeoAction];
+    }
+}
 #pragma mark - AMapSearchDelegate
+- (void)searchRequest:(id)request didFailWithError:(NSError *)error
+{
+    NSLog(@"错误");
+}
+- (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
+{
+    NSLog(@"------ response = %@",response);
+    NSString * title = response.regeocode.addressComponent.city;
+    if (title.length == 0) {
+        title = response.regeocode.addressComponent.province;
+    }
+    self.mapView.userLocation.title = title;
+    self.mapView.userLocation.subtitle = response.regeocode.formattedAddress;
+}
 
 @end
